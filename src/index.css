@@ -26,3 +26,81 @@ body {
   background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0), 0 0 0 rgba(250, 204, 21, 0);
+  }
+  50% {
+    box-shadow: 0 14px 36px rgba(59, 130, 246, 0.25), 0 0 28px rgba(250, 204, 21, 0.2);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 700ms ease-out both;
+}
+
+.animate-float {
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+.hero-spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 20% 15%, rgba(250, 204, 21, 0.24), transparent 34%),
+    radial-gradient(circle at 78% 72%, rgba(56, 189, 248, 0.2), transparent 36%);
+}
+
+.card-lift {
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+  animation: fadeSlideUp 600ms ease-out both;
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  border-color: rgba(17, 97, 232, 0.35);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+}
+
+.section-entrance {
+  animation: fadeSlideUp 720ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-slide-up,
+  .animate-float,
+  .card-lift,
+  .section-entrance {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .card-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

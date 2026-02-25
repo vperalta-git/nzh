@@ -153,7 +153,7 @@ const offices = [
 
 function ProductSection({ id, eyebrow, title, subtitle, items }) {
   return (
-    <section id={id} className="border-t border-slate-200 bg-white py-12">
+    <section id={id} className="border-t border-slate-200 bg-white py-12 section-entrance">
       <div className="mx-auto w-full max-w-6xl px-5">
         <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -164,11 +164,11 @@ function ProductSection({ id, eyebrow, title, subtitle, items }) {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {items.map((item) => (
-            <article key={item.model} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+          {items.map((item, index) => (
+            <article key={item.model} className="card-lift rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-5" style={{ animationDelay: `${index * 70}ms` }}>
               <div className="flex items-start justify-between gap-3">
                 <h3 className="text-lg font-extrabold text-nzh-deep md:text-xl">{item.model}</h3>
-                <span className="rounded-full bg-yellow-100 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-amber-700">
+                <span className="rounded-full border border-yellow-300 bg-yellow-100 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-amber-700 shadow-sm">
                   NZH
                 </span>
               </div>
@@ -197,10 +197,10 @@ function ProductSection({ id, eyebrow, title, subtitle, items }) {
 function App() {
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4">
           <div className="flex items-center gap-3">
-            <img src={nzhLogo} alt="NZH logo" className="h-11 w-auto" />
+            <img src={nzhLogo} alt="NZH logo" className="h-11 w-auto animate-float" />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">NZH International</p>
               <p className="text-sm font-bold text-slate-800">Vehicle and Machinery Inc.</p>
@@ -210,13 +210,13 @@ function App() {
           <div className="hidden items-center gap-2 md:flex">
             <a
               href="#portfolio"
-              className="rounded-full bg-nzh-blue px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-nzh-deep"
+              className="rounded-full bg-nzh-blue px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition duration-300 hover:-translate-y-0.5 hover:bg-nzh-deep hover:shadow-lg"
             >
               View Products
             </a>
             <a
               href="#company-profile"
-              className="rounded-full border border-yellow-400 bg-yellow-300/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-amber-900 transition hover:bg-yellow-300"
+              className="rounded-full border border-yellow-400 bg-yellow-300/70 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-amber-900 transition duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-lg"
             >
               Company Details
             </a>
@@ -224,35 +224,37 @@ function App() {
         </div>
       </header>
 
-      <section className="bg-gradient-to-r from-nzh-deep via-nzh-blue to-blue-500 py-14 text-white">
+      <section className="hero-spotlight relative overflow-hidden bg-gradient-to-r from-nzh-deep via-nzh-blue to-blue-500 py-14 text-white">
+        <div className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-yellow-300/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 right-6 h-60 w-60 rounded-full bg-cyan-200/20 blur-3xl" />
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-yellow-200">
+            <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-yellow-200 animate-fade-slide-up">
               NZH Product Portfolio
             </p>
-            <h1 className="mt-4 text-4xl font-black leading-tight md:text-5xl">Formal Product Catalog and Company Profile</h1>
-            <p className="mt-4 max-w-2xl text-slate-100">
+            <h1 className="animate-fade-slide-up mt-4 text-4xl font-black leading-tight md:text-5xl">Formal Product Catalog and Company Profile</h1>
+            <p className="animate-fade-slide-up mt-4 max-w-2xl text-slate-100">
               A clean and presentable overview of our key vehicle categories, supported by clear specifications,
               use cases, and company identity details for clients and partners.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/25 bg-white/10 p-6">
+          <div className="animate-fade-slide-up rounded-2xl border border-white/25 bg-white/10 p-6 shadow-neon backdrop-blur-sm">
             <h2 className="text-2xl font-extrabold">Catalog Coverage</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border border-white/20 bg-white/10 p-3">
+              <div className="card-lift rounded-lg border border-white/20 bg-white/10 p-3">
                 <p className="text-xs uppercase tracking-wider text-yellow-200">Categories</p>
                 <p className="mt-1 text-2xl font-black">4</p>
               </div>
-              <div className="rounded-lg border border-white/20 bg-white/10 p-3">
+              <div className="card-lift rounded-lg border border-white/20 bg-white/10 p-3">
                 <p className="text-xs uppercase tracking-wider text-yellow-200">Products Listed</p>
                 <p className="mt-1 text-2xl font-black">17</p>
               </div>
-              <div className="rounded-lg border border-white/20 bg-white/10 p-3">
+              <div className="card-lift rounded-lg border border-white/20 bg-white/10 p-3">
                 <p className="text-xs uppercase tracking-wider text-yellow-200">Branches</p>
                 <p className="mt-1 text-2xl font-black">3+</p>
               </div>
-              <div className="rounded-lg border border-white/20 bg-white/10 p-3">
+              <div className="card-lift rounded-lg border border-white/20 bg-white/10 p-3">
                 <p className="text-xs uppercase tracking-wider text-yellow-200">Core Promise</p>
                 <p className="mt-1 text-base font-black">Quality + Service</p>
               </div>
@@ -295,7 +297,7 @@ function App() {
         />
       </main>
 
-      <section id="company-profile" className="border-t border-slate-200 bg-slate-100 py-14">
+      <section id="company-profile" className="border-t border-slate-200 bg-slate-100 py-14 section-entrance">
         <div className="mx-auto w-full max-w-6xl space-y-10 px-5">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.16em] text-nzh-blue">Company Profile</p>
@@ -303,7 +305,7 @@ function App() {
           </div>
 
           <div className="grid gap-5 lg:grid-cols-2">
-            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+            <article className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
               <h3 className="text-2xl font-extrabold text-slate-900">Company Vision</h3>
               <p className="mt-3 text-slate-700">
                 To be the reliable assistant of successful companies in purchasing and using trucks,
@@ -311,7 +313,7 @@ function App() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+            <article className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
               <h3 className="text-2xl font-extrabold text-slate-900">Company Mission</h3>
               <ul className="mt-3 space-y-2 text-slate-700">
                 <li>Choose high-quality products with prompt service at reasonable price.</li>
@@ -321,13 +323,13 @@ function App() {
             </article>
           </div>
 
-          <article className="rounded-2xl border border-yellow-300 bg-yellow-50 p-6">
+          <article className="card-lift rounded-2xl border border-yellow-300 bg-gradient-to-r from-yellow-50 to-amber-50 p-6">
             <h3 className="text-2xl font-extrabold text-slate-900">Company Slogan</h3>
             <p className="mt-3 text-xl font-bold text-nzh-deep">Assist you to be even more successful!</p>
           </article>
 
           <div className="grid gap-5 lg:grid-cols-2">
-            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+            <article className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
               <h3 className="text-2xl font-extrabold text-slate-900">Meaning of NZH Logo</h3>
               <ul className="mt-4 space-y-3 text-slate-700">
                 {logoMeaning.map((item) => (
@@ -339,7 +341,7 @@ function App() {
               </ul>
             </article>
 
-            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+            <article className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
               <h3 className="text-2xl font-extrabold text-slate-900">Meaning of NZH Brand</h3>
               <ul className="mt-4 space-y-3 text-slate-700">
                 {brandMeaning.map((item) => (
@@ -352,13 +354,13 @@ function App() {
             </article>
           </div>
 
-          <article className="rounded-2xl border border-slate-200 bg-white p-6">
+          <article className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
             <h3 className="text-2xl font-extrabold text-slate-900">Company Timeline</h3>
             <div className="mt-5 space-y-3">
               {milestones.map((item) => (
                 <div
                   key={item.year}
-                  className="grid gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 md:grid-cols-[120px_1fr] md:items-start"
+                  className="card-lift grid gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 md:grid-cols-[120px_1fr] md:items-start"
                 >
                   <p className="font-black text-nzh-blue">{item.year}</p>
                   <p className="text-slate-700">{item.event}</p>
@@ -367,11 +369,11 @@ function App() {
             </div>
           </article>
 
-          <article className="rounded-2xl border border-slate-200 bg-white p-6">
+          <article className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
             <h3 className="text-2xl font-extrabold text-slate-900">Branch Coverage</h3>
             <div className="mt-4 grid gap-4 md:grid-cols-3">
               {offices.map((item) => (
-                <div key={item.branch} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div key={item.branch} className="card-lift rounded-xl border border-slate-200 bg-slate-50 p-4">
                   <p className="text-lg font-bold text-slate-900">{item.branch}</p>
                   <p className="mt-2 text-sm text-slate-700">{item.address}</p>
                 </div>
