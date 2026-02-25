@@ -48,6 +48,28 @@ const offices = [
   },
 ]
 
+const milestones = [
+  { year: '2018.5', event: 'NZH registered with SEC in the Philippines.' },
+  { year: '2018.7', event: 'Set up Marilao warehouse and built up Sales Team.' },
+  { year: '2018.9', event: 'Set up Quezon City Office.' },
+  { year: '2018.12', event: 'Set up Bacolor Service Center.' },
+  { year: '2019.10', event: 'Opened Montalban Service Center.' },
+  { year: '2021.12', event: 'Opened A. Bonifacio Retail Store.' },
+  { year: '2023.9', event: 'Hand-over ceremony at Bacolor Branch.' },
+]
+
+const logoMeaning = [
+  'Blue is the color of sky, symbolizing rationality, objectivity, and ambition.',
+  'Yellow represents nobility and wealth, aiming to be respectful and rich in value.',
+  'The gears represent machinery industry; rotating arrows symbolize growth from reason to brilliance.',
+]
+
+const brandMeaning = [
+  'No excuse, no accountability without justification or evasion.',
+  'Zero complaint and quick issue resolution for customer satisfaction.',
+  'High quality and high responsibility, with strong after-sales service.',
+]
+
 function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -60,12 +82,20 @@ function App() {
               <p className="text-sm font-bold text-slate-100">Vehicle and Machinery Inc.</p>
             </div>
           </div>
-          <a
-            href="#products"
-            className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-100 transition hover:border-nzh-blue hover:text-nzh-blue"
-          >
-            View Products
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="#products"
+              className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-100 transition hover:border-nzh-blue hover:text-nzh-blue"
+            >
+              View Products
+            </a>
+            <a
+              href="#company-details"
+              className="rounded-full border border-cyan-300/40 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-300/20"
+            >
+              Company Details
+            </a>
+          </div>
         </div>
       </header>
 
@@ -160,6 +190,77 @@ function App() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="company-details" className="bg-slate-100 py-14 text-slate-900">
+        <div className="mx-auto w-full max-w-6xl space-y-10 px-5">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wider text-nzh-blue">Company Identity</p>
+            <h2 className="mt-1 text-3xl font-black md:text-4xl">Mission, Vision, Timeline and Brand Meaning</h2>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 className="text-2xl font-extrabold text-slate-900">Company Vision</h3>
+              <p className="mt-3 text-slate-700">
+                To be the reliable assistant of successful companies in purchasing and using trucks,
+                heavy equipment, and related machinery.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 className="text-2xl font-extrabold text-slate-900">Company Mission</h3>
+              <ul className="mt-3 space-y-2 text-slate-700">
+                <li>Choose high-quality products with prompt service at reasonable price.</li>
+                <li>Cultivate a workplace where every employee feels valued and empowered.</li>
+                <li>Create a sustainable and stable investment return for shareholders.</li>
+              </ul>
+            </article>
+          </div>
+
+          <article className="rounded-2xl border border-nzh-blue/20 bg-blue-50 p-6">
+            <h3 className="text-2xl font-extrabold text-slate-900">Company Slogan</h3>
+            <p className="mt-3 text-xl font-bold text-nzh-blue">Assist you to be even more successful!</p>
+          </article>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 className="text-2xl font-extrabold text-slate-900">Meaning of NZH Logo</h3>
+              <ul className="mt-4 space-y-3 text-slate-700">
+                {logoMeaning.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nzh-blue" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 className="text-2xl font-extrabold text-slate-900">Meaning of NZH Brand</h3>
+              <ul className="mt-4 space-y-3 text-slate-700">
+                {brandMeaning.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nzh-blue" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
+
+          <article className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h3 className="text-2xl font-extrabold text-slate-900">Company Timeline</h3>
+            <div className="mt-5 space-y-3">
+              {milestones.map((item) => (
+                <div key={item.year} className="grid gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 md:grid-cols-[120px_1fr] md:items-start">
+                  <p className="font-black text-nzh-blue">{item.year}</p>
+                  <p className="text-slate-700">{item.event}</p>
+                </div>
+              ))}
+            </div>
+          </article>
         </div>
       </section>
 
