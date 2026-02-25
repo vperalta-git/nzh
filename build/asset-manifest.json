@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.ef15352b.css",
-    "main.js": "/static/js/main.3a5dbdf8.js",
+    "main.css": "/static/css/main.fc7858fd.css",
+    "main.js": "/static/js/main.e6880adf.js",
     "static/media/nzhlogo-removebg-preview.png": "/static/media/nzhlogo-removebg-preview.06d20091594c39acff2c.png",
     "index.html": "/index.html",
-    "main.ef15352b.css.map": "/static/css/main.ef15352b.css.map",
-    "main.3a5dbdf8.js.map": "/static/js/main.3a5dbdf8.js.map"
+    "main.fc7858fd.css.map": "/static/css/main.fc7858fd.css.map",
+    "main.e6880adf.js.map": "/static/js/main.e6880adf.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef15352b.css",
-    "static/js/main.3a5dbdf8.js"
+    "static/css/main.fc7858fd.css",
+    "static/js/main.e6880adf.js"
   ]
 }

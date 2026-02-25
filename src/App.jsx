@@ -140,20 +140,42 @@ const offices = [
   {
     branch: 'Main Office',
     address: '#57 King Center Bldg., Sgt. Rivera St., Brgy. Pag-ibig, Nayon 1115, Quezon City',
+    phone: '0939 723 9163',
   },
   {
     branch: 'Bacolor',
-    address: 'Jose Abad Santos Ave., San Vicente, Bacolor, Pampanga',
+    address: 'Jose Abad Santos Ave., San Vicente, Bacolor, Pampanga (beside Asahi Group)',
+    phone: '0933 160 5173',
   },
   {
     branch: 'Montalban',
     address: 'Lot 42, Brgy. Forestry Ville, Corner Dao St., Rodriguez, Rizal',
+    phone: '0995 966 1432 / 0939 119 0948',
+  },
+  {
+    branch: 'A. Bonifacio',
+    address: '858 A. Bonifacio, La Loma, Quezon City',
+    phone: '0969 462 2216',
+  },
+  {
+    branch: 'Marilao',
+    address: '3M Compound, Sta. Rosa 2, Marilao',
+    phone: '0977 266 4815',
   },
 ]
 
-function ProductSection({ id, eyebrow, title, subtitle, items }) {
+const stakeholderBenefits = {
+  client: ['High Quality Product', 'Customer Satisfaction', 'Reasonable Price'],
+  clientPromise: 'Our experienced team ensures a smooth and seamless process, guaranteeing your peace of mind.',
+  staff: ['Competitive Salary', 'Career Growth', 'Flexible Work Arrangement'],
+  staffPromise: 'We are committed to support you every step of the way.',
+  stockholder: ['Good ROI', 'Strategic Growth', 'Engagement and Communication'],
+  stockholderPromise: 'We assure our stockholders of reliable performance and transparent communication, ensuring their confidence in our company\'s stability and success.',
+}
+
+function ProductSection({ id, eyebrow, title, subtitle, items, bgColor = 'bg-white' }) {
   return (
-    <section id={id} className="border-t border-slate-200 bg-white py-12 section-entrance">
+    <section id={id} className={`border-t border-slate-200 ${bgColor} py-12 section-entrance`}>
       <div className="mx-auto w-full max-w-6xl px-5">
         <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -264,37 +286,10 @@ function App() {
       </section>
 
       <main id="portfolio">
-        <ProductSection
-          id="dump-trucks"
-          eyebrow="Best Seller"
-          title="Dump Truck Series"
-          subtitle="Trusted for government projects, infrastructure works, and heavy-load operations."
-          items={dumpTruckSeries}
-        />
-
-        <ProductSection
-          id="tractor-head"
-          eyebrow="Long-Haul"
-          title="Tractor Head Series"
-          subtitle="Built for distance delivery, fuel efficiency, and reliable high-power operations."
-          items={tractorHeadSeries}
-        />
-
-        <ProductSection
-          id="modern-jeepney"
-          eyebrow="Modern Innovation"
-          title="Modern Jeepney"
-          subtitle="Passenger-ready public transport models designed for comfort, safety, and compliance."
-          items={modernJeepneySeries}
-        />
-
-        <ProductSection
-          id="special-purpose"
-          eyebrow="Customized Units"
-          title="Special Purpose Vehicle"
-          subtitle="Customized machinery and logistics units for concrete, fuel, lifting, and hauling operations."
-          items={specialPurposeSeries}
-        />
+        <ProductSection id="dump-trucks" eyebrow="Best Seller" title="Dump Truck Series" subtitle="Trusted for government projects, infrastructure works, and heavy-load operations." items={dumpTruckSeries} bgColor="bg-white" />
+        <ProductSection id="tractor-head" eyebrow="Long-Haul" title="Tractor Head Series" subtitle="Built for distance delivery, fuel efficiency, and reliable high-power operations." items={tractorHeadSeries} bgColor="bg-gradient-to-b from-blue-50 to-white" />
+        <ProductSection id="modern-jeepney" eyebrow="Modern Innovation" title="Modern Jeepney" subtitle="Passenger-ready public transport models designed for comfort, safety, and compliance." items={modernJeepneySeries} bgColor="bg-white" />
+        <ProductSection id="special-purpose" eyebrow="Customized Units" title="Special Purpose Vehicle" subtitle="Customized machinery and logistics units for concrete, fuel, lifting, and hauling operations." items={specialPurposeSeries} bgColor="bg-gradient-to-b from-yellow-50 to-white" />
       </main>
 
       <section id="company-profile" className="border-t border-slate-200 bg-slate-100 py-14 section-entrance">
@@ -370,12 +365,18 @@ function App() {
           </article>
 
           <article className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
-            <h3 className="text-2xl font-extrabold text-slate-900">Branch Coverage</h3>
-            <div className="mt-4 grid gap-4 md:grid-cols-3">
+            <h3 className="text-2xl font-extrabold text-slate-900">All Branches</h3>
+            <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {offices.map((item) => (
-                <div key={item.branch} className="card-lift rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <p className="text-lg font-bold text-slate-900">{item.branch}</p>
-                  <p className="mt-2 text-sm text-slate-700">{item.address}</p>
+                <div key={item.branch} className="card-lift rounded-xl border-2 border-nzh-blue/20 bg-gradient-to-br from-blue-50 to-white p-4 hover:border-nzh-blue">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <p className="text-lg font-bold text-nzh-deep">{item.branch}</p>
+                      <p className="mt-2 text-xs text-slate-600">{item.address}</p>
+                    </div>
+                    <span className="mt-1 rounded-full bg-yellow-100 px-2 py-1 text-[10px] font-bold text-amber-700">Open</span>
+                  </div>
+                  <p className="mt-3 font-semibold text-nzh-blue text-sm">{item.phone}</p>
                 </div>
               ))}
             </div>
@@ -383,10 +384,88 @@ function App() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-200 bg-white py-7">
-        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 text-sm text-slate-600">
-          <p>© {new Date().getFullYear()} NZH International Vehicle and Machinery Inc.</p>
-          <p>Formal product portfolio presentation.</p>
+      <section className="relative overflow-hidden bg-gradient-to-r from-nzh-blue via-blue-500 to-blue-600 py-16 text-white section-entrance">
+        <div className="pointer-events-none absolute inset-0 opacity-10" style={{
+          backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 400%22><path d=%22M0,200 Q300,100 600,200 T1200,200%22 fill=%22none%22 stroke=%22white%22 stroke-width=%222%22/></svg>')`,
+          backgroundRepeat: 'repeat-x',
+        }} />
+        <div className="pointer-events-none absolute -right-20 top-0 h-96 w-96 rounded-full bg-yellow-300/15 blur-3xl" />
+        <div className="mx-auto w-full max-w-6xl px-5">
+          <div className="max-w-2xl">
+            <h2 className="animate-fade-slide-up text-4xl font-black leading-tight md:text-5xl">How to assist you to be Even More Successful?</h2>
+            <p className="animate-fade-slide-up mt-4 text-lg text-blue-100">NZH commits to serving our stakeholders with integrity, value, and unwavering support.</p>
+          </div>
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            <div className="animate-fade-slide-up card-lift rounded-2xl border border-white/25 bg-white/10 p-6 backdrop-blur-sm" style={{ animationDelay: '100ms' }}>
+              <h3 className="text-2xl font-bold text-yellow-300">For Client</h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                {stakeholderBenefits.client.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-yellow-300" />
+                    <span className="font-semibold">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm text-blue-100 italic">\"{stakeholderBenefits.clientPromise}\"</p>
+            </div>
+            <div className="animate-fade-slide-up card-lift rounded-2xl border border-white/25 bg-white/10 p-6 backdrop-blur-sm" style={{ animationDelay: '150ms' }}>
+              <h3 className="text-2xl font-bold text-yellow-300">For Staff</h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                {stakeholderBenefits.staff.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-yellow-300" />
+                    <span className="font-semibold">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm text-blue-100 italic">\"{stakeholderBenefits.staffPromise}\"</p>
+            </div>
+            <div className="animate-fade-slide-up card-lift rounded-2xl border border-white/25 bg-white/10 p-6 backdrop-blur-sm" style={{ animationDelay: '200ms' }}>
+              <h3 className="text-2xl font-bold text-yellow-300">For Stockholder</h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                {stakeholderBenefits.stockholder.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-yellow-300" />
+                    <span className="font-semibold">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm text-blue-100 italic">\"{stakeholderBenefits.stockholderPromise}\"</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t-4 border-nzh-blue bg-gradient-to-r from-nzh-deep to-blue-700 py-10 text-white">
+        <div className="mx-auto w-full max-w-6xl px-5">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div>
+              <h3 className="font-bold uppercase tracking-wider text-yellow-300">About NZH</h3>
+              <p className="mt-3 text-sm text-blue-100/90">
+                NZH International Vehicle and Machinery Inc. is your trusted partner for quality vehicles, reliable service, and continuous growth.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold uppercase tracking-wider text-yellow-300">Quick Links</h3>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li><a href="#portfolio" className="text-blue-100/80 transition hover:text-yellow-300">View Products</a></li>
+                <li><a href="#company-profile" className="text-blue-100/80 transition hover:text-yellow-300">Company Profile</a></li>
+                <li><a href="#dump-trucks" className="text-blue-100/80 transition hover:text-yellow-300">Catalog</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold uppercase tracking-wider text-yellow-300">Contact</h3>
+              <div className="mt-3 space-y-1 text-sm text-blue-100/80">
+                <p>📞 Main: 0939 723 9163</p>
+                <p>📧 Support Available 24/7</p>
+                <p>🏢 5 Branches Philippines-Wide</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-white/20 pt-6 text-center text-sm text-blue-100/70">
+            <p>© {new Date().getFullYear()} NZH International Vehicle and Machinery Inc. All rights reserved.</p>
+            <p className="mt-2">Assist you to be even more successful!</p>
+          </div>
         </div>
       </footer>
     </div>
