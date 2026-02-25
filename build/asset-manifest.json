@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.63a1f08a.css",
+    "main.js": "/static/js/main.b88134f4.js",
+    "static/media/nzhlogo-removebg-preview.png": "/static/media/nzhlogo-removebg-preview.06d20091594c39acff2c.png",
+    "index.html": "/index.html",
+    "main.63a1f08a.css.map": "/static/css/main.63a1f08a.css.map",
+    "main.b88134f4.js.map": "/static/js/main.b88134f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.63a1f08a.css",
+    "static/js/main.b88134f4.js"
+  ]
+}
