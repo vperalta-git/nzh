@@ -252,12 +252,12 @@ function App() {
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-yellow-200 animate-fade-slide-up">
-              NZH Product Portfolio
+              Your Partner in Progress
             </p>
-            <h1 className="animate-fade-slide-up mt-4 text-4xl font-black leading-tight md:text-5xl">Formal Product Catalog and Company Profile</h1>
+            <h1 className="animate-fade-slide-up mt-4 text-4xl font-black leading-tight md:text-5xl">Power Your Business.<br />Drive Your Success.</h1>
             <p className="animate-fade-slide-up mt-4 max-w-2xl text-slate-100">
-              A clean and presentable overview of our key vehicle categories, supported by clear specifications,
-              use cases, and company identity details for clients and partners.
+              From rugged dumptrucks to heavy-duty haulers—NZH delivers the machines that move nations forward.
+              Quality you can trust. Service you can count on. Results that speak for themselves.
             </p>
           </div>
 
